@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <table class="table">
+    <thead>
+        <tr>
+            <h5>Please Login to Continue</h5>
+            
+        </tr>
+    </thead>
+    <tbody>
+   
+        <tr>
+          <a class="btn btn-info mt-4 text-white" href="{{ path('app_login')}}">Login</a>
+          </br>
+        <a class="btn btn-info mt-2 text-white" href="{{ path('app_register')}}">Sign Up</a>
+        </tr>
+   
+    </tbody>
+    </table>
+</div>
+
+{% endblock %}

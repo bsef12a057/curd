@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            <div class="container">
+                {% for messege in app.flashes ('notice') %}
+                                    <div class="alert alert-success mt-4 mb-b">
+                                        {{messege}}
+                                    </div>
+                                    {% endfor %}
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">title</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Action</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                {% for data in list %}
+                    <tr>
+                        <th scope="row">{{data.id}}</th>
+                        <td>{{data.title}}</td>
+                        <td>{{data.contentt}}</td>
+                        <td>
+                        <a class="btn btn-warning" href="{{ path('update',{'id':data.id})}}">Update</a>
+                        <a class="btn btn-danger" href="{{ path('delete',{'id':data.id})}}">Delete</a>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+             </div>
+        </div>
+    
+    {% else %}
+        <div class="container">
+    <table class="table">
+    <thead>
+        <tr>
+            <h5>Please Login to Continue</h5>
+            
+        </tr>
+    </thead>
+    <tbody>
+   
+        <tr>
+          <a class="btn btn-info mt-4 text-white" href="{{ path('app_login')}}">Login</a>
+          </br>
+        <a class="btn btn-info mt-2 text-white" href="{{ path('app_register')}}">Sign Up</a>
+        </tr>
+   
+    </tbody>
+    </table>
+</div>
+{% endif %}
+    
+{% endblock %}
